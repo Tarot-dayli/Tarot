@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore-compat.js"></script>
+    <title>Tarot</title>
+    <script src="https://kit.fontawesome.com/b29e775e16.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="fuenteLogo">
+    <header class="bg-gray-800 text-white py-4 fixed top-0 w-full z-10 backdrop-blur-sm bg-opacity-95">
+        <div class="flex items-center justify-center">
+            <img src="https://png.pngtree.com/png-clipart/20210128/ourlarge/pngtree-divination-tarot-png-image_2842425.jpg"
+                alt="Tarot" class="w-20 h-20 rounded-full">
+            <h1 class="text-3xl font-bold ml-4 fuenteLogo">APRENDE TAROT</h1>
+        </div>
+    </header>
+    <main class="m-5 pt-20">
+        <section class="pt-10">
+            <img src="./images/tarot" alt="Cards-Tarot" />
+            <p class="text-xl pt-3 font-semibold text-justify">
+                Bienvenida(o) al Curso de lectura del Tarot, donde ofrecemos los
+                mejores cursos gratuitos por tiempo limitado a toda persona interesada
+                en aprender los misterios del universo.
+            </p>
+        </section>
+        <section class="carousel py-8">
+            <section id="iconos" class="carousel py-8 bg-gray-800 rounded-3xl">
+                <div class="flex space-x-4 p-4">
+                    <div class="icon flex-shrink-0 w-24 text-center">
+                        <center>
+                            <img src="./images/amor.png" alt="" class="w-1/2">
+                            <p class="text-white">AMOR</p>
+                        </center>
+                    </div>
+                    <div class="icon flex-shrink-0 w-24 text-center">
+                        <center>
+                            <img src="./images/pareja.png" alt="" class="w-1/2">
+                            <p class="text-white">FUTURO</p>
+                        </center>
+                    </div>
+                    <div class="icon flex-shrink-0 w-24 text-center">
+                        <center>
+                            <img src="./images/oraculo.png" alt="" class="w-1/2">
+                            <p class="text-white">ORÁCULO</p>
+                        </center>
+                    </div>
+                    <div class="icon flex-shrink-0 w-24 text-center">
+                        <center>
+                            <img src="./images/astrologia.png" alt="" class="w-1/2">
+                            <p class="text-white">ASTROLOGIA</p>
+                        </center>
+                    </div>
+                    <div class="icon flex-shrink-0 w-24 text-center">
+                        <center>
+                            <img src="./images/tarotpng.png" alt="" class="w-1/2">
+                            <p class="text-white">TAROT</p>
+                        </center>
+                    </div>
+                    <div class="icon flex-shrink-0 w-24 text-center">
+                        <center>
+                            <img src="./images/destino.png" alt="" class="w-1/2">
+                            <p class="text-white">DESTINO</p>
+                        </center>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <p class="text-xl pt-3 font-semibold text-justify">Inicia Sesión con FACEBOOK y llevate de regalo un
+                    Aceeso de por vida a los siguientes cursos.</p>
+            </section>
+            <section class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 py-8">
+
+                <div class="relative bg-white rounded-lg p-6 flex flex-col items-center justify-center shadow-md">
+                    <div class="overflow-hidden w-full h-50 rounded-t-lg">
+                        <img src="./images/cbelleza.jpg" alt="" class="object-cover w-full h-full">
+                    </div>
+                    <div class="text-center mt-4">
+                        <p class="text-lg font-semibold">Belleza</p>
+                        <p class="text-gray-500">Descubre como volver a verte joven y bella con el Tarot.</p>
+                    </div>
+                    <span class="absolute top-0 right-0 bg-red-500 text-white px-2 py-1 rounded-full">GRATIS</span>
+                </div>
+                <!-- Repite este bloque para cada carta -->
+
+                <!-- Bloque de cartas omitido por brevedad -->
+
+            </section>
+            <button id="openModal"
+                class="fixed bottom-6 right-6 bg-blue-900 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-full shadow-md flex items-center">
+                <i class="fas fa-plus mr-2"></i> <!-- Añadido un margin-right para separar el icono del texto -->
+                Registrarse con Facebook
+            </button>
+
+            <!-- Modal -->
+            <div id="myModal"
+                class="hidden fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center z-50">
+                <!-- Contenido del modal -->
+                <div class="bg-white rounded-lg p-8">
+                    <h2 class="text-lg font-semibold mb-4">Registrarse</h2>
+                    <form id="registerForm" class="space-y-4">
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700">Email:</label>
+                            <input type="text" id="email" name="email" class="mt-1 p-2 border rounded-md w-full">
+                        </div>
+                        <div>
+                            <label for="password" class="block text-sm font-medium text-gray-700">Contraseña:</label>
+                            <input type="password" id="password" name="password"
+                                class="mt-1 p-2 border rounded-md w-full">
+                        </div>
+                        <div>
+                            <label for="repassword" class="block text-sm font-medium text-gray-700">Confirmar
+                                contraseña:</label>
+                            <input type="password" id="repassword" name="repassword"
+                                class="mt-1 p-2 border rounded-md w-full">
+                        </div>
+                        <center>
+                            <button id="enviar" type="submit" onclick="Enviar()"
+                                class="bg-blue-800 hover:bg-blue-600 text-white font-semibold px-6 py-3 rounded-full">Registrarse</button>
+                        </center>
+                    </form>
+                </div>
+            </div>
+
+        </section>
+    </main>
+</body>
+<script src="app.js"></script>
+<script>
+    // JavaScript para abrir y cerrar el modal
+    const openModalButton = document.getElementById('openModal');
+    const modal = document.getElementById('myModal');
+
+    openModalButton.addEventListener('click', () => {
+        modal.classList.remove('hidden');
+    });
+
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.classList.add('hidden');
+        }
+    });
+</script>
+
+</html>

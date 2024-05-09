@@ -1,0 +1,24 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@100&family=Pacifico&family=Quicksand:wght@300&display=swap");
+html {
+  scroll-behavior: smooth;
+}
+
+.fuenteLogo {
+    font-family: "Barlow Condensed", sans-serif;
+    font-family: "Pacifico", cursive;
+    font-family: "Quicksand", sans-serif;
+  }
+
+.fuente {
+    font-family: "Roboto", "Sans-serif";
+}
+
+.carousel {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.icon {
+  scroll-snap-align: start;
+}
