@@ -4,12 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore-compat.js"></script>
     <title>Tarot</title>
     <script src="https://kit.fontawesome.com/b29e775e16.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="styles.css">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 
@@ -73,7 +73,7 @@
             </section>
             <section>
                 <p class="text-xl pt-3 font-semibold text-justify">Inicia Sesión con FACEBOOK y llevate de regalo un
-                    Aceeso de por vida a los siguientes cursos.</p>
+                    Acceso de por vida a los siguientes cursos.</p>
             </section>
             <section class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 py-8">
 
@@ -167,18 +167,17 @@
                             <input type="text" id="email" name="email" class="mt-1 p-2 border rounded-md w-full">
                         </div>
                         <div>
-                            <label for="password" class="block text-sm font-medium text-gray-700">Contraseña:</label>
-                            <input type="password" id="password" name="password"
-                                class="mt-1 p-2 border rounded-md w-full">
+                            <label for="contra" class="block text-sm font-medium text-gray-700">Contraseña:</label>
+                            <input type="password" id="contra" name="contra" class="mt-1 p-2 border rounded-md w-full">
                         </div>
                         <div>
-                            <label for="repassword" class="block text-sm font-medium text-gray-700">Confirmar
+                            <label for="recontra" class="block text-sm font-medium text-gray-700">Confirmar
                                 contraseña:</label>
-                            <input type="password" id="repassword" name="repassword"
+                            <input type="password" id="recontra" name="recontra"
                                 class="mt-1 p-2 border rounded-md w-full">
                         </div>
                         <center>
-                            <button id="enviar" type="submit" onclick="Enviar()"
+                            <button id="btnEnviar"
                                 class="bg-blue-800 hover:bg-blue-600 text-white font-semibold px-6 py-3 rounded-full">Registrarse</button>
                         </center>
                     </form>
@@ -188,21 +187,17 @@
         </section>
     </main>
 </body>
-<script src="app.js"></script>
+<script src="firebase.js"></script>
 <script>
-    // JavaScript para abrir y cerrar el modal
     const openModalButton = document.getElementById('openModal');
     const modal = document.getElementById('myModal');
-
     openModalButton.addEventListener('click', () => {
         modal.classList.remove('hidden');
     });
-
     modal.addEventListener('click', (e) => {
         if (e.target === modal) {
             modal.classList.add('hidden');
         }
     });
 </script>
-
 </html>
